@@ -63,15 +63,8 @@ install(EXPORT streets_vehicle_list_libTargets
   NAMESPACE streets_vehicle_list_lib::
 )
 
-include(CMakePackageConfigHelpers)
-configure_package_config_file(
-  ${PROJECT_SOURCE_DIR}/cmake/streets_vehicle_list_libConfig.cmake.in
-  ${CMAKE_CURRENT_BINARY_DIR}/streets_vehicle_list_libConfig.cmake
-  INSTALL_DESTINATION  lib/streets_vehicle_list_lib/streets_vehicle_list_lib
-)
-
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/streets_vehicle_list_libConfig.cmake
-  DESTINATION  ${CMAKE_INSTALL_LIBDIR}/cmake/streets_vehicle_list_lib/
+install(FILES ${PROJECT_SOURCE_DIR}/cmake/streets_vehicle_list_libConfig.cmake
+  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/streets_vehicle_list_lib/
 )
 
 install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/
