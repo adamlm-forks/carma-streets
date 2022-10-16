@@ -61,19 +61,12 @@ install(TARGETS streets_signal_phase_and_timing_lib
 
 install(EXPORT streets_signal_phase_and_timing_libTargets
   FILE streets_signal_phase_and_timing_libTargets.cmake
-  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/streets_signal_phase_and_timing_lib/
+  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/streets_signal_phase_and_timing_lib
   NAMESPACE streets_signal_phase_and_timing_lib::
 )
 
-include(CMakePackageConfigHelpers)
-configure_package_config_file(
-  ${PROJECT_SOURCE_DIR}/cmake/streets_signal_phase_and_timing_libConfig.cmake.in
-  ${CMAKE_CURRENT_BINARY_DIR}/streets_signal_phase_and_timing_libConfig.cmake
-  INSTALL_DESTINATION lib/streets_signal_phase_and_timing_lib/streets_signal_phase_and_timing_lib/
-)
-
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/streets_signal_phase_and_timing_libConfig.cmake
-    DESTINATION  ${CMAKE_INSTALL_LIBDIR}/cmake/streets_signal_phase_and_timing_lib/
+install(FILES ${PROJECT_SOURCE_DIR}/cmake/streets_signal_phase_and_timing_libConfig.cmake
+  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/streets_signal_phase_and_timing_lib
 )
 
 install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/
