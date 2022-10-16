@@ -5,12 +5,9 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
 # Required for shared_mutex
 set(CMAKE_CXX_STANDARD 17)
 
+include(dependencies.cmake)
 
-find_package(spdlog REQUIRED)
 add_definitions(-DSPDLOG_ACTIVE_LEVEL=SPDLOG_LEVEL_TRACE)
-
-find_package(RapidJSON REQUIRED)
-find_package(GTest REQUIRED)
 
 add_library(streets_vehicle_list_lib
                 src/models/vehicle_list.cpp
