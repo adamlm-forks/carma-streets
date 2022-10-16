@@ -17,7 +17,7 @@ target_include_directories(streets_vehicle_list_test
 target_link_libraries(streets_vehicle_list_test
   PRIVATE
     spdlog::spdlog
-    gtest
+    GTest::GTest
     streets_vehicle_list_lib
 )
 
