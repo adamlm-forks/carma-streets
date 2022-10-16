@@ -1,29 +1,30 @@
-########################
-# googletest for unit testing
-########################
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
-set(BINARY streets_vehicle_list_test)
-file(GLOB_RECURSE TEST_SOURCES LIST_DIRECTORIES false *.h *.cpp)
-set(SOURCES ${TEST_SOURCES} WORKING_DIRECTORY  ${PROJECT_SOURCE_DIR}/test)
+add_executable(streets_vehicle_list_test
+  test_main.cpp
+  test_vehicle_list_signalized_status_intent_processor.cpp
+  test_vehicle_list.cpp
+)
 
-
-add_executable(${BINARY} ${TEST_SOURCES}
-            # src/models/vehicle_list.cpp
-            # src/exceptions/status_intent_processing_exception.cpp
-            # src/message_processors/signalized_status_intent_processor.cpp
-            # src/message_processors/all_stop_status_intent_processor.cpp
-            # src/message_processors/status_intent_processor.cpp
-                )
-
-target_compile_features(${BINARY}
+target_compile_features(streets_vehicle_list_test
   PRIVATE
     cxx_std_17
 )
 
-add_test(NAME ${BINARY} COMMAND ${BINARY})
-target_include_directories(${BINARY} PUBLIC ${PROJECT_SOURCE_DIR}/include)
-target_link_libraries(${BINARY} PUBLIC
-                spdlog::spdlog
-                gtest
-                streets_vehicle_list_lib
-                )
+target_include_directories(streets_vehicle_list_test
+  PRIVATE
+    $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+)
+
+target_link_libraries(streets_vehicle_list_test
+  PRIVATE
+    spdlog::spdlog
+    gtest
+    streets_vehicle_list_lib
+)
+
+# The CI system expects the test binary to be in the project's binary root directory
+set_target_properties(streets_vehicle_list_test
+  PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}
+)
+
+gtest_discover_tests(streets_vehicle_list_test)
