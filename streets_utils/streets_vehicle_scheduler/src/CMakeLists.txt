@@ -73,12 +73,6 @@ install(EXPORT streets_vehicle_scheduler_libTargets
   NAMESPACE streets_vehicle_scheduler_lib::
 )
 
-include(CMakePackageConfigHelpers)
-configure_package_config_file(
-    ${PROJECT_SOURCE_DIR}/cmake/streets_vehicle_scheduler_libConfig.cmake.in
-    ${CMAKE_CURRENT_BINARY_DIR}/streets_vehicle_scheduler_libConfig.cmake
-    INSTALL_DESTINATION  ${CMAKE_INSTALL_LIBDIR}/streets_vehicle_scheduler_lib/streets_vehicle_scheduler_lib/ )
-
 install(FILES ${PROJECT_BINARY_DIR}/streets_vehicle_scheduler_libConfig.cmake
   DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/streets_vehicle_scheduler_lib
 )
