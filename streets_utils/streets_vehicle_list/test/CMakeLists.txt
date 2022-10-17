@@ -9,11 +9,6 @@ target_compile_features(streets_vehicle_list_test
     cxx_std_17
 )
 
-target_include_directories(streets_vehicle_list_test
-  PRIVATE
-    $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
-)
-
 target_link_libraries(streets_vehicle_list_test
   PRIVATE
     spdlog::spdlog
