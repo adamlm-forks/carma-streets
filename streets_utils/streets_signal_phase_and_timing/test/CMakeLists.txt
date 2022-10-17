@@ -6,11 +6,6 @@ add_executable(streets_signal_phase_and_timing_test
   test_time_change_detail.cpp
 )
 
-target_include_directories(streets_signal_phase_and_timing_test
-  PRIVATE
-    <$CMAKE_BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
-)
-
 target_link_libraries(streets_signal_phase_and_timing_test
   PRIVATE
     spdlog::spdlog
